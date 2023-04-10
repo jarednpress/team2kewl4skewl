@@ -22,3 +22,5 @@ services:
     volumes:
       - ./src:/home/node/app
     command: 'npm start'
+volumes:
+  group-project:
