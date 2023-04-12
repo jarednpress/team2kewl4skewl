@@ -1,0 +1,23 @@
+Meeting minutes
+Meeting 1 - April 12th
+- Fix project board
+  - Add points
+  - Create user stories and assign
+- Make your own branch
+  - Work on that for your story
+  - Complete code push before meeting
+- Release notes each week
+  - In project guide
+  - Need the first one done by the end of week 2
+  - By next Friday
+- Every week need some type of deliverable
+  - By next week possibly have a skeleton
+  - Replicate lab 9
+  - Goals: Skeleton, Database, UI
+- In milestones
+  - Make ta meetings and own meetings
+  - Always update the same file
+- Everybody needs at least 4 commits, pick 1 to be graded on, and tally the number of commits everyone has
+- Put the table in the meeting notes
+- Maybe use music API
+- Put minutes on the GitHub repository
