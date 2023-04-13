@@ -61,6 +61,10 @@ app.use(
 // <!-- Section 4 : API Routes -->
 // *****************************************************
 
+app.get('/welcome', (req, res) => {
+  res.json({status: 'success', message: 'Welcome!'});
+});
+
 // TODO - Include your API routes here
 
 // *****************************************************
