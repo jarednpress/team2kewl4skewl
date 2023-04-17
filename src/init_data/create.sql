@@ -13,5 +13,9 @@ create table songs(
     weather_label varchar(100) not null
 );
 
+-- Test User - Username: asdf, Password: asdf
+insert into users (username, password) values
+('asdf', '$2b$10$ylYVvQjCCdTn1bzrkjBOM.yzz3FwLCnHWvVRJEQvJyjuvwaeopZ0a');
+
 insert into songs (song_name, artist_name, length_in_sec, weather_label) values 
 ('Never Be Like You (feat. Kai)', 'Flume', 235, 'Summer');

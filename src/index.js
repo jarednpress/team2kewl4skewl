@@ -65,7 +65,53 @@ app.get('/welcome', (req, res) => {
   res.json({status: 'success', message: 'Welcome!'});
 });
 
-// TODO - Include your API routes here
+app.post('/login', async (req, res) => {
+  const username = req.body.username;
+  const query = 'select password from users where username = $1;';
+  db.any(query, username)
+    .then(async function (data) {
+      if(data[0]){
+        const match = await bcrypt.compare(req.body.password, data[0].password);
+        if (match) {
+          req.session.user = {
+            username: username
+          }
+          res.redirect(200, '/home');
+        } else { 
+          res.render('pages/login.ejs', {
+            message: "Incorrect Username or Password"
+          })
+        }
+      }
+      else {
+        res.render('pages/register.ejs', {
+          message: "User not found, please register"
+        })
+
+      }
+    })
+    .catch(function (err) {
+      res.render("pages/login", {
+        message: err
+      })
+    });
+});
+
+// Authentication Middleware.
+const auth = (req, res, next) => {
+  if (!req.session.user) {
+    // Default to login page.
+    return res.redirect('/login');
+  }
+  next();
+};
+
+// Authentication Required
+app.use(auth);
+
+app.get('/home', (req, res) => {
+  res.render('pages/home.ejs')
+});
 
 // *****************************************************
 // <!-- Section 5 : Start Server-->

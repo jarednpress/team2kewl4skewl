@@ -23,6 +23,31 @@ describe('Server!', () => {
       });
   });
 
+it('positive : /login success', done => {
+  chai
+    .request(server)
+    .post('/login')
+    .send({username: 'asdf', password: 'asdf'})
+    .end((err, res) => {
+      res.header['location'].should.include('/home') //for res.redirect change to endpoint name
+      expect(res).to.have.status(200);
+      done();
+    });
+});
+
+it('Negative : /login. Checking invalid name, redirect to register', done => {
+  chai
+    .request(server)
+    .post('/login')
+    .send({username: 'not real', password: 'not real'})
+    .end((err, res) => {
+      expect(res).to.have.status(200);
+      expect(res).to.have.header('content-type','text/html; charset=utf-8');
+      expect(res.text).to.contain('<title>Register</title>'); //for res.render change to title of page
+      done();
+    });
+});
+
   // ===========================================================================
   // TO-DO: Part A Login unit test case
 });
