@@ -109,6 +109,10 @@ const auth = (req, res, next) => {
 // Authentication Required
 app.use(auth);
 
+app.get('/home', (req, res) => {
+  res.render('pages/home.ejs')
+});
+
 // *****************************************************
 // <!-- Section 5 : Start Server-->
 // *****************************************************
