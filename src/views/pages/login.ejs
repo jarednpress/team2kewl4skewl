@@ -1,1 +1,25 @@
-<title>Login</title> <!-- The title of this page needs to be "Register" for test cases to work, do not edit this line -->
+<title>Login</title>
+<!-- The title of this page needs to be "Register" for test cases to work, do not edit this line -->
+
+<main>
+    <div class="container">
+        <!-- THE REST OF YOUR HTML CODE GOES HERE -->
+        <h1>Login</h1>
+        <form action="/login" method="POST">
+            <div class="form-group my-2">
+                <label for="InputUsername">Username</label>
+                <input type="text" class="form-control" id="username" name="username" aria-describedby="emailHelp"
+                    placeholder="Enter Username">
+            </div>
+            <div class="form-group">
+                <label for="InputPassword">Password</label>
+                <input type="password" class="form-control" id="password" name="password" placeholder="Enter Password">
+            </div>
+            <button type="submit" class="btn btn-primary my-2">Login</button>
+        </form>
+        <small class="form-text text-muted">Don't have an account?</small>
+        <small class="nav-item me-1">
+            <a class="nav-link" href="/register">Register</a>
+        </small>
+    </div>
+</main>
