@@ -65,6 +65,23 @@ app.get('/welcome', (req, res) => {
   res.json({status: 'success', message: 'Welcome!'});
 });
 
+app.get('/', (req, res) => {
+  //res.redirect('/login'); 
+  res.redirect('/login'); 
+});
+
+// app.get('/home', (req, res) => {
+//   res.redirect('/login'); 
+// });
+
+app.get('/login', (req, res) => {
+  res.render('pages/login.ejs');
+});
+
+app.get('/register', (req, res) => {
+  res.render('pages/register.ejs')
+});
+
 app.post('/login', async (req, res) => {
   const username = req.body.username;
   const query = 'select password from users where username = $1;';
@@ -97,6 +114,24 @@ app.post('/login', async (req, res) => {
     });
 });
 
+app.post('/register', async (req, res) => {
+  //hash the password using bcrypt library
+  console.log(req.body.username)
+  const hash = await bcrypt.hash(req.body.password, 10);
+  const username = req.body.username;
+
+  // To-DO: Insert username and hashed password into 'users' table
+  const query = "insert into users (username, password) values ($1, $2);";
+
+  db.any(query, [username, hash])
+  .then(function (data) {
+    res.redirect('/login')
+  })
+  .catch(function (err) { //redirect to get register route
+    res.redirect('/register')
+  });
+});
+
 // Authentication Middleware.
 const auth = (req, res, next) => {
   if (!req.session.user) {
@@ -107,12 +142,18 @@ const auth = (req, res, next) => {
 };
 
 // Authentication Required
-app.use(auth);
+// app.use(auth);
 
 app.get('/home', (req, res) => {
   res.render('pages/home.ejs')
 });
 
+app.get("/logout", (req, res) => {
+  req.session.destroy();
+  res.render("pages/login", {
+    message: "Logged out Successfully"
+  });
+});
 // *****************************************************
 // <!-- Section 5 : Start Server-->
 // *****************************************************
