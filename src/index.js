@@ -62,12 +62,12 @@ app.use(
 // *****************************************************
 
 app.get('/welcome', (req, res) => {
-  res.json({status: 'success', message: 'Welcome!'});
+  res.render('pages/welcome.ejs');
 });
 
 app.get('/', (req, res) => {
   //res.redirect('/login'); 
-  res.redirect('/home'); 
+  res.redirect('/welcome'); 
 });
 
 // app.get('/home', (req, res) => {
@@ -150,7 +150,7 @@ app.get('/home', (req, res) => {
 
 app.get("/logout", (req, res) => {
   req.session.destroy();
-  res.render("pages/login", {
+  res.render("pages/welcome", {
     message: "Logged out Successfully"
   });
 });
