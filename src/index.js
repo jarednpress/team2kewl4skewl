@@ -113,7 +113,7 @@ app.post('/login', async (req, res) => {
       })
     });
 });
-
+/*
 app.post('/register', async (req, res) => {
   //hash the password using bcrypt library
   console.log(req.body.username)
@@ -131,6 +131,7 @@ app.post('/register', async (req, res) => {
     res.redirect('/register')
   });
 });
+*/
 
 // Authentication Middleware.
 const auth = (req, res, next) => {
