@@ -106,6 +106,32 @@ const auth = (req, res, next) => {
   next();
 };
 
+app.post('/register', async (req, res) => {
+  const { username, password } = req.body;
+  try {
+    const query = 'SELECT * FROM users WHERE username = $1';
+    db.any(query, username)
+      .then(async function (data) {
+        if (data[0]) {
+          res.render('pages/register.ejs', {
+            message: "Username is already taken"
+          })
+        }
+      })
+
+
+    const hashedPassword = await bcrypt.hash(password, 10);
+
+    const insertQuery = 'INSERT INTO users (username, password) VALUES ($1, $2)';
+    await db.none(insertQuery, [username, hashedPassword]);
+    res.redirect(200, '/home');
+  } catch (err) {
+    console.error(err);
+    return res.status(500).json({ message: 'Internal server error' });
+  }
+});
+
+
 // Authentication Required
 app.use(auth);
 
