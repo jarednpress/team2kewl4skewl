@@ -154,10 +154,7 @@ app.post('/register', async (req, res) => {
           })
         }
       })
-
-
     const hashedPassword = await bcrypt.hash(password, 10);
-
     const insertQuery = 'INSERT INTO users (username, password) VALUES ($1, $2)';
     await db.none(insertQuery, [username, hashedPassword]);
     res.redirect(200, '/home');
