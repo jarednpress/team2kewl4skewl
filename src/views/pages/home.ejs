@@ -1,1 +1,47 @@
-<title>Home</title> <!-- The title of this page needs to be "Register" for test cases to work, do not edit this line -->
+<!-- <title>Home</title> The title of this page needs to be "Register" for test cases to work, do not edit this line -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .logo {
+      width: 100px;
+      height: 100px;
+      margin-bottom: 20px;
+    }
+    .buttons {
+      display: flex;
+    }
+    button {
+      padding: 10px 20px;
+      margin: 0 10px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <img src="path/to/your/logo.png" alt="Logo" class="logo">
+    <div class="buttons">
+      <button onclick="location.href='/login'">Login</button>
+      <button onclick="location.href='/register'">Sign Up</button>
+    </div>
+  </div>
+</body>
+</html>
