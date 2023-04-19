@@ -1,27 +1,74 @@
-<title>Register</title> <!-- The title of this page needs to be "Register" for test cases to work, do not edit this line -->
+<!DOCTYPE html>
+<html lang="en">
 
-<%- include ('../partials/head') %>
-<%- include ('../partials/menu') %>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register</title>
+  <%- include ('../partials/head') %>
+    <%- include ('../partials/menu') %>
+      <style>
+        .custom-btn {
+          padding: 10px 20px;
+          font-size: 25px;
+          cursor: pointer;
+          width: 150px;
+          text-align: center;
+          color: #fff;
+          background-color: #000000;
+          border: none;
+          border-radius: 10px;
+          box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+          transition: 0.3s;
+        }
 
-<main>
+        .custom-btn:hover {
+          background-color: #b30000;
+          box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+        }
+
+        .form-wrapper {
+          text-align: center;
+          max-width: 400px;
+          margin: 0 auto;
+        }
+
+        .form-control {
+          max-width: 100%;
+          height: 40px;
+        }
+      </style>
+</head>
+
+<body>
+  <main>
     <div class="container">
-      <!-- THE REST OF YOUR HTML CODE GOES HERE -->
-      <h1>Register</h1>
-      <form action="/register" method="POST">
+      <div class="form-wrapper">
+        <br>
+        <br>
+        <br>
+        <h1>Create Account</h1>
+        <br>
+        <form action="/register" method="POST">
           <div class="form-group my-2">
-            <label for="InputUsername">Username</label>
             <input type="text" class="form-control" id="username" name="username" aria-describedby="emailHelp"
               placeholder="Enter Username">
           </div>
           <div class="form-group">
-            <label for="InputPassword">Password</label>
             <input type="password" class="form-control" id="password" name="password" placeholder="Enter Password">
           </div>
-          <button type="submit" class="btn btn-primary my-2">Register</button>
+          <br>
+          <button type="submit" class="custom-btn my-2">Register</button>
         </form>
-        <small class="form-text text-muted">Already have an account? </small>
+        <br>
+        <br>
+        <small class="form-text text-muted">Already have an account?</small>
         <small class="nav-item me-1">
-          <a class = "nav-link" href = "/login">Login</a>
+          <a class="nav-link" href="/login">Login</a>
         </small>
+      </div>
     </div>
- </main>
+  </main>
+</body>
+
+</html>

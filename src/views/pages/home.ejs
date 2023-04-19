@@ -1,5 +1,107 @@
-<title>Home</title>
+<!DOCTYPE html>
+<html lang="en">
 
-<%- include ('../partials/head') %>
-<%- include ('../partials/menu') %>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <%- include ('../partials/head') %>
+        <%- include ('../partials/menu') %>
+            <style>
+                .custom-btn {
+                    padding: 10px 20px;
+                    font-size: 25px;
+                    cursor: pointer;
+                    width: 150px;
+                    text-align: center;
+                    color: #fff;
+                    background-color: #000000;
+                    border: none;
+                    border-radius: 10px;
+                    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+                    transition: 0.3s;
+                }
 
+                .custom-btn:hover {
+                    background-color: #b30000;
+                    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+                }
+
+                .content-wrapper {
+                    text-align: center;
+                    max-width: 800px;
+                    margin: 0 auto;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                }
+
+                .travel-text {
+                    font-size: 50px;
+                    font-weight: bold;
+                    margin-bottom: 20px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                }
+
+                .travel-input {
+                    font-size: 30px;
+                    font-weight: bold;
+                    margin: 0 5px;
+                    text-align: center;
+                    width: 120px;
+                    border: none;
+                    border-bottom: 2px solid #000;
+                }
+
+                .recent-playlists {
+                    margin-top: 40px;
+                    padding: 20px;
+                    background-color: rgba(0, 0, 0, 0.1);
+                    border-radius: 10px;
+                    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+                    text-align: center;
+                }
+
+                .recent-playlists h2 {
+                    font-size: 25px;
+                    font-weight: bold;
+                    margin-bottom: 10px;
+                }
+            </style>
+</head>
+
+<body>
+    <main>
+        <div class="container">
+
+            <br>
+            <br>
+            <br>
+
+            <div class="content-wrapper">
+                <h1>Welcome, USERNAME!</h1>
+                <form class="travel-text" action="/your_destination_path" method="POST">
+                    <label for="from">I am driving from </label>
+                    <input class="travel-input" type="text" id="from" name="from" required placeholder="wya">
+                    <label for="to"> to </label>
+                    <input class="travel-input" type="text" id="to" name="to" required placeholder="wyd">
+                </form>
+                <button class="custom-btn" onclick="location.href='/Welcome'">Let's Go!</button>
+            </div>
+
+            <br>
+            <br>
+            <br>
+
+            <div class="recent-playlists">
+                <h2>Recent Playlists</h2>
+                <h6>this one u made last week</h6>
+                <h6>this one u made on that one trip, remember that?</h6>
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>
