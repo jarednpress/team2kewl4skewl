@@ -132,6 +132,7 @@ app.post('/register', async (req, res) => {
   });
 });
 
+
 // Authentication Middleware.
 const auth = (req, res, next) => {
   if (!req.session.user) {
@@ -140,6 +141,8 @@ const auth = (req, res, next) => {
   }
   next();
 };
+
+
 
 // Authentication Required
 // app.use(auth);
