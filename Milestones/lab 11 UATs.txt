@@ -1,0 +1,56 @@
+UATs
+
+Feature 1: Register an acount
+The first feature we will be testing is creating a functional account where the user can register using a username and password, this information will be added to a database, and used later to log the user in.
+
+Acceptance criteria:
+The user must enter a username and password
+This information is stored in the database in the user table
+When the user submits the form if they have entered all required fields the login page will pop up, else they will stay on the register page
+The username and password can be retrieved and used to verify at login
+The user can log in using the newly created acount
+
+To verify this the user will enter a new username and password and click submit. If it takes them to the login page and they are able to log in using this information then they have passed the test.
+
+The data used in this feature is the user account information which is stored in the user database.
+
+The environment is using the web application.
+
+The results is weather it allows you to log in which requires authentication and if the page redirects.
+
+The user acceptance testers need to understand the acceptance criteria and execute the test plan, by creating an acount.
+
+Feature 2: Make a playlist based on weather
+The second feature is making a playlist based on the weather of your road trip based on the start and end location. The user will input a start location and time as well as a destination and the website will generate a playlist based off of the weather at appropriate times and locations. This will be tested by picking a random start place and time as well as a random destination, inputting them into the appropriate fields, and seeing if a playlist is generated based on the predicted weather.
+
+Acceptance criteria:
+User must input start location and destination
+Playlist is based on weather at appropriate times and locations
+The playlist is displayed with songs titles
+
+To verify the user will pick data where they can verify the predicted weather at the start place and destination. Then the user will look at the generated playlist and check whether the generated playlist is comprised of songs that marked as correlating to the appropriate weather.
+
+The data that will be used to test is random start place and destinations as well as times, such as the current time or a random time over the next 24 hours.
+
+The environment used will be the web app and verifying the predicted weather conditions by checking the weather at the appropriate times using a google.
+
+The results are weather the generated playlists music correlates to the verified weather at the specific locations.
+
+The user acceptance testers will need to test various types of weather in various places, and understand the apps features thoroughly before testing.
+
+Feature 3: View saved playlists
+The third and final feature we will be testing is being able to test if users can access previously created playlists this will be tested by having users create a playlist then test check if it appears in the playlist history.
+
+Acceptance criteria:
+Users can see at least 3 prreviously created playlists
+Playlists are displayed on home page
+Old playlists are accessible
+User can log out and log back in and see the playlist
+
+The data that will be used to test the feature is the user inputting a start and end location and start time and the website outputting a playlist, that should be accessible to the user on the home page.
+
+The test environment will be using the web app and verifying that a created playlist is accessible on the home page after.
+
+The results that would indicate success is if the user can log in and out and still find the playlist on their home page when they log in.
+
+The user testers will need to create accounts and check the various circumstances that are outlined regarding where they should be able to find created playlists.

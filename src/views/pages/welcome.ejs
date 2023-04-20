@@ -1,6 +1,6 @@
-<!-- <title>Home</title> The title of this page needs to be "Register" for test cases to work, do not edit this line -->
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,34 +14,62 @@
       margin: 0;
       font-family: Arial, sans-serif;
     }
+
     .container {
       display: flex;
       flex-direction: column;
       align-items: center;
     }
+
     .logo {
-      width: 100px;
-      height: 100px;
+      width: 200px;
+      height: 200px;
       margin-bottom: 20px;
+      object-fit: contain;
     }
+
     .buttons {
       display: flex;
     }
+
     button {
       padding: 10px 20px;
       margin: 0 10px;
-      font-size: 16px;
+      font-size: 25px;
       cursor: pointer;
+      width: 150px;
+      text-align: center;
+      color: #fff;
+      /* Change text color */
+      background-color: #000000;
+      /* Change background color */
+      border: none;
+      /* Remove border */
+      border-radius: 10px;
+      /* Add border-radius */
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+      /* Add box-shadow */
+      transition: 0.3s;
+      /* Add transition for hover effect */
+    }
+
+    button:hover {
+      background-color: #b30000;
+      /* Change background color on hover */
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+      /* Change box-shadow on hover */
     }
   </style>
 </head>
+
 <body>
   <div class="container">
-    <img src="../../img/logo.png" alt="Logo" class="logo">
+    <img src="https://i.postimg.cc/V61N8bCj/IMG-0326.jpg" alt="Logo" class="logo">
     <div class="buttons">
       <button onclick="location.href='/login'">Login</button>
       <button onclick="location.href='/register'">Sign Up</button>
     </div>
   </div>
 </body>
+
 </html>
