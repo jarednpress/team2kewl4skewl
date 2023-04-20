@@ -82,6 +82,10 @@ app.get('/register', (req, res) => {
   res.render('pages/register.ejs')
 });
 
+app.get('/playlist', (req, res) => {
+  res.render('pages/playlist.ejs')
+});
+
 app.post('/login', async (req, res) => {
   const username = req.body.username;
   const query = 'select password from users where username = $1;';
