@@ -48,6 +48,28 @@ it('Negative : /login. Checking invalid name, redirect to register', done => {
     });
 });
 
+it('positive : /register success', done => {
+  chai
+    .request(server)
+    .post('/register')
+    .send({username: 'StupidUserName', password: 'EasyPassWord'})
+    .end((err, res) => {
+      res.header['location'].should.include('/home') //for res.redirect change to endpoint name
+      expect(res).to.have.status(200);
+      done();
+    });
+});
+it('Negative : /register Username Already Taken', done => {
+  chai
+    .request(server)
+    .post('/register')
+    .send({username: 'asdf', password: 'asdf'})
+    .end((err, res) => {
+      res.header['location'].should.include('/login') //for res.redirect change to endpoint name
+      expect(res).to.have.status(200);
+      done();
+    });
+});
   // ===========================================================================
   // TO-DO: Part A Login unit test case
 });
