@@ -161,6 +161,13 @@ app.get("/logout", (req, res) => {
     message: "Logged out Successfully"
   });
 });
+
+app.get('/playlist', (req,res) => {
+  res.render('pages/playlist.ejs')
+});
+
+
+
 // *****************************************************
 // <!-- Section 5 : Start Server-->
 // *****************************************************

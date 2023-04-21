@@ -7,11 +7,64 @@
     <title>Playlist</title>
     <%- include ('../partials/head') %>
         <%- include ('../partials/menu') %>
+        <style>
+            .header-text {
+                font-size: 50px;
+                font-weight: bold;
+                margin-bottom: 20px;
+                justify-content: center;
+                align-items: center;
+            }
+            .travel-text {
+                font-size: 50px;
+                font-weight: bold;
+                margin-bottom: 20px;
+                justify-content: center;
+                align-items: center;
+                color: #b30000
+            }
+            .content-wrapper {
+                text-align: center;
+                max-width: 800px;
+                margin: 0 auto;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+            .playlist {
+                margin-top: 40px;
+                padding: 20px;
+                background-color: rgba(0, 0, 0, 0.1);
+                border-radius: 10px;
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            }
+            .playlist h2 {
+                font-size: 25px;
+                font-weight: bold;
+                margin-bottom: 10px;
+            }
+            
+        </style>
 </head>
 
 <body>
     <main>
-        <h1>test</h1>
+        <div class="container">
+            <br>
+            <br>
+            <div class="content-wrapper">
+                <p><span class="travel-text">Place One </span><span class="header-text">to </span><span class="travel-text">Place Two</span></p>
+                <h1>Your Playlist is ? minute(s) long</h1>
+            </div>
+            <br>
+            <div class="playlist">
+                <h2 style="color: rgba(0, 0, 0, 0.7); font-weight: bold"> Weather:</h2>
+                <div style="text-align: center">
+                    <h2>Artist - song</h2>
+                    <h6>ALBUM Duration in minutes</h6>
+                </div>
+            </div>
+        </div>
     </main>
 </body>
 
