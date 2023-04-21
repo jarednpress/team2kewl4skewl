@@ -151,6 +151,72 @@ app.get('/home', (req, res) => {
   res.render('pages/home.ejs')
 });
 
+app.get('/playlist', async (req, res) => {
+  //var token = await getToken(); //return a string of the token only
+  //var latlong = await getLatLong(); //return an array with [lat_val, log_val]
+  //var kelvin = await getWeather(); //return kelvin
+
+  token = "BQBKpX8kG_lDk8yYNEk2hkQPxWVxUuM6XKSO30wp7rFgfgwDYJbqNQXAAP7DdgpHWOUM47IdfIKM_CD4Bfe9MJm9zVjX4QX-Vv5oychB7sGdbNraxsc3";
+  kelvin = 302;
+
+  var fahrenheit = (kelvin-273.15)*(9/5)+32
+
+  if (fahrenheit < 30) {
+    var seed_artists = "4NHQUGzhtTLFvgF5SZesLK";
+    var seed_genres = "classical,country";
+    var seed_tracks = "0c6xIDDpzE81m2q797ordA";
+  } else if (fahrenheit >= 30 && fahrenheit < 50) {
+    var seed_artists = "4NHQUGzhtTLFvgF5SZesLK";
+    var seed_genres = "classical,country";
+    var seed_tracks = "0c6xIDDpzE81m2q797ordA";
+  } else if (fahrenheit >= 50 && fahrenheit < 65) {
+    var seed_artists = "4NHQUGzhtTLFvgF5SZesLK";
+    var seed_genres = "classical,country";
+    var seed_tracks = "0c6xIDDpzE81m2q797ordA";
+  } else if (fahrenheit >= 65 && fahrenheit < 80) {
+    var seed_artists = "4NHQUGzhtTLFvgF5SZesLK";
+    var seed_genres = "classical,country";
+    var seed_tracks = "0c6xIDDpzE81m2q797ordA";
+  } else { // f >= 80
+    var seed_artists = "4NHQUGzhtTLFvgF5SZesLK";
+    var seed_genres = "classical,country";
+    var seed_tracks = "0c6xIDDpzE81m2q797ordA";
+  }
+  const limit = 10;
+  const market = "US"
+
+  axios({
+    url: `https://api.spotify.com/v1/recommendations`,
+    method: 'GET',
+    dataType: 'json',
+    headers: {
+      'Accept': 'application/json',
+      'Authorization': "Bearer " + token,
+      'Content-Type': 'application/json'
+    },
+    params: {
+      limit: limit,
+      market: market,
+      seed_artists: seed_artists,
+      seed_genres: seed_genres,
+      seed_tracks: seed_tracks
+    },
+  })
+    .then(results => {
+      console.log(results.data.tracks);
+      res.render("pages/playlist", {
+        tracks: results.data.tracks
+      })
+    })
+    .catch(error => {
+      res.render("pages/playlist", {
+        tracks: [],
+        message: error
+      })
+    });
+
+})
+
 app.get("/logout", (req, res) => {
   req.session.destroy();
   res.render("pages/welcome", {
