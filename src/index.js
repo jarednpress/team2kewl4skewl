@@ -142,10 +142,11 @@ const auth = (req, res, next) => {
   next();
 };
 
+
+
 // Authentication Required
 // app.use(auth);
-
-async function getLatLong(cityname, statecode, countrycode) {
+const getLatLong = async (cityname, statecode, countrycode) => {
   const url = `http://api.openweathermap.org/geo/1.0/direct?q=${cityname},${statecode},${countrycode}&appid=${process.env.API_KEY_openweather}`;
   try {
     const response = await axios.get(url);
@@ -158,7 +159,7 @@ async function getLatLong(cityname, statecode, countrycode) {
   }
 }
 
-async function getWeather(lat, lon) {
+const getWeather = async (lat, lon) => {
   const url = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${process.env.API_KEY_openweather}`;
   try {
     const response = await axios.get(url);
@@ -169,7 +170,6 @@ async function getWeather(lat, lon) {
     return null;
   }
 }
-
 
 app.get('/home', (req, res) => {
   res.render('pages/home.ejs')
