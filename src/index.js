@@ -212,15 +212,16 @@ app.get('/playlist', async (req, res) => {
   var city1_countrycode = "US";
   var city2_countrycode = "US"; */
 
-  var token = await getToken(process.env.SPOTIFY_CLIENT_ID, process.env.SPOTIFY_CLIENT_SECRET); //return a string of the token only
+  //var token = await getToken(process.env.SPOTIFY_CLIENT_ID, process.env.SPOTIFY_CLIENT_SECRET); //return a string of the token only
+  //var token = "BQCHS7h5Zt5-0vBS37VINrTYlqsj0hhJU-86yDIKOYw67kDjiO7QVq86ZsV1obOR10Ny1kA_ilHDDpfNuPxS65Yg6Exaj-jPgnzfUWmuQUviHW0pB9ee";
+  
   var city1_latlong = await getLatLong(city1_name); //return an array with [lat_val, log_val]
   var city2_latlong = await getLatLong(city2_name);
+
   var city1_kelvin = await getWeather(city1_latlong[0], city1_latlong[1]); //return kelvin
   var city2_kelvin = await getWeather(city2_latlong[0], city2_latlong[1]);
-
-  //var token = "BQCHS7h5Zt5-0vBS37VINrTYlqsj0hhJU-86yDIKOYw67kDjiO7QVq86ZsV1obOR10Ny1kA_ilHDDpfNuPxS65Yg6Exaj-jPgnzfUWmuQUviHW0pB9ee";
-  var city1_kelvin = 302;
-  var city2_kelvin = 288;
+  //var city1_kelvin = 302;
+  //var city2_kelvin = 288;
 
   var city1_fahrenheit = (city1_kelvin-273.15)*(9/5)+32;
   var city2_fahrenheit = (city2_kelvin-273.15)*(9/5)+32;
