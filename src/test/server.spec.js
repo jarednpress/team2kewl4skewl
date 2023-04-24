@@ -54,7 +54,7 @@ it('positive : /register success', done => {
     .post('/register')
     .send({username: 'StupidUserName', password: 'EasyPassWord'})
     .end((err, res) => {
-      res.header['location'].should.include('/home') //for res.redirect change to endpoint name
+      res.header['location'].should.include('/login') //for res.redirect change to endpoint name
       expect(res).to.have.status(200);
       done();
     });
