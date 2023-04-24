@@ -151,41 +151,32 @@ app.get('/home', (req, res) => {
   res.render('pages/home.ejs')
 });
 
-app.get('/playlist', async (req, res) => {
-  //var token = await getToken(); //return a string of the token only
-  //var latlong = await getLatLong(); //return an array with [lat_val, log_val]
-  //var kelvin = await getWeather(); //return kelvin
-
-  token = "BQBKpX8kG_lDk8yYNEk2hkQPxWVxUuM6XKSO30wp7rFgfgwDYJbqNQXAAP7DdgpHWOUM47IdfIKM_CD4Bfe9MJm9zVjX4QX-Vv5oychB7sGdbNraxsc3";
-  kelvin = 302;
-
-  var fahrenheit = (kelvin-273.15)*(9/5)+32
-
-  if (fahrenheit < 30) {
-    var seed_artists = "4NHQUGzhtTLFvgF5SZesLK";
-    var seed_genres = "classical,country";
+const getTracks = async (fahrenheit, token) => {
+  if (fahrenheit < 32) {
+    var bars = "All the waves came moving, pushing us under water, But don't worry 'bout that..."
+    var seed_artists = "5oLxJrktO7kOEJANS6nkZB";
+    var seed_genres = "ambient,electronic,chill";
+    var seed_tracks = "6qlWh52SoBOb6udnz3Xwxj";
+  } else if (fahrenheit >= 32 && fahrenheit < 55) {
+    var bars = "But I know, know that it's right, To listen to my breathing and start believing myself...";
+    var seed_artists = "3l0CmX0FuQjFxr8SK7Vqag";
+    var seed_genres = "alternative";
     var seed_tracks = "0c6xIDDpzE81m2q797ordA";
-  } else if (fahrenheit >= 30 && fahrenheit < 50) {
-    var seed_artists = "4NHQUGzhtTLFvgF5SZesLK";
-    var seed_genres = "classical,country";
-    var seed_tracks = "0c6xIDDpzE81m2q797ordA";
-  } else if (fahrenheit >= 50 && fahrenheit < 65) {
-    var seed_artists = "4NHQUGzhtTLFvgF5SZesLK";
-    var seed_genres = "classical,country";
-    var seed_tracks = "0c6xIDDpzE81m2q797ordA";
-  } else if (fahrenheit >= 65 && fahrenheit < 80) {
-    var seed_artists = "4NHQUGzhtTLFvgF5SZesLK";
-    var seed_genres = "classical,country";
-    var seed_tracks = "0c6xIDDpzE81m2q797ordA";
-  } else { // f >= 80
-    var seed_artists = "4NHQUGzhtTLFvgF5SZesLK";
-    var seed_genres = "classical,country";
-    var seed_tracks = "0c6xIDDpzE81m2q797ordA";
+  } else if (fahrenheit >= 55 && fahrenheit < 70) {
+    var bars = "It's time, you've come a long way, open the blinds let me see your face, you wouldn't be the first renegade to need somebody...";
+    var seed_artists = "7gXy60xRcwYujBFoYHnR2O";
+    var seed_genres = "folk,chill,pop";
+    var seed_tracks = "73W5aXorr5vxrySFcoZqIN";
+  } else { // f >= 70
+    var bars = "Such a long time, I've been waitin' I've been waitin' for a long time...";
+    var seed_artists = "246dkjvS1zLTtiykXe5h60";
+    var seed_genres = "pop,hip-hop,happy";
+    var seed_tracks = "05mDaV9Vb3wrzjF6OPZnhq";
   }
   const limit = 10;
-  const market = "US"
+  const market = "US";
 
-  axios({
+  const result = axios({
     url: `https://api.spotify.com/v1/recommendations`,
     method: 'GET',
     dataType: 'json',
@@ -203,17 +194,48 @@ app.get('/playlist', async (req, res) => {
     },
   })
     .then(results => {
-      console.log(results.data.tracks);
-      res.render("pages/playlist", {
-        tracks: results.data.tracks
-      })
+      var tracks = results.data.tracks;
+      return tracks;
     })
     .catch(error => {
-      res.render("pages/playlist", {
-        tracks: [],
-        message: error
-      })
+      return null;
     });
+    return result;
+}
+
+
+app.get('/playlist', async (req, res) => {
+  var city1_name = req.body.from;
+  var city2_name = req.body.to;
+  /* var city1_statecode = null; 
+  var city2_statecode = null;
+  var city1_countrycode = "US";
+  var city2_countrycode = "US"; */
+
+  var token = await getToken(process.env.SPOTIFY_CLIENT_ID, process.env.SPOTIFY_CLIENT_SECRET); //return a string of the token only
+  var city1_latlong = await getLatLong(city1_name); //return an array with [lat_val, log_val]
+  var city2_latlong = await getLatLong(city2_name);
+  var city1_kelvin = await getWeather(city1_latlong[0], city1_latlong[1]); //return kelvin
+  var city2_kelvin = await getWeather(city2_latlong[0], city2_latlong[1]);
+
+  //var token = "BQCHS7h5Zt5-0vBS37VINrTYlqsj0hhJU-86yDIKOYw67kDjiO7QVq86ZsV1obOR10Ny1kA_ilHDDpfNuPxS65Yg6Exaj-jPgnzfUWmuQUviHW0pB9ee";
+  var city1_kelvin = 302;
+  var city2_kelvin = 288;
+
+  var city1_fahrenheit = (city1_kelvin-273.15)*(9/5)+32;
+  var city2_fahrenheit = (city2_kelvin-273.15)*(9/5)+32;
+
+  var city1_tracks = await getTracks(city1_fahrenheit, token);
+  var city2_tracks = await getTracks(city2_fahrenheit, token);
+  
+  /* console.log("hello")
+  console.log(city1_tracks)
+  console.log(city2_tracks) */
+
+  res.render("pages/playlist", {
+    city1_tracks: city1_tracks,
+    city2_tracks: city2_tracks
+  })
 
 })
 
