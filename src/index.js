@@ -151,6 +151,31 @@ const auth = (req, res, next) => {
 // Authentication Required
 // app.use(auth);
 
+const getLatLong = async (cityname) => {
+  const url = `http://api.openweathermap.org/geo/1.0/direct?q=${cityname}&appid=${process.env.API_KEY_openweather}`;
+  try {
+    const response = await axios.get(url);
+    const lat = response.data[0].lat;
+    const long = response.data[0].lon;
+    return [ lat, long ];
+  } catch (error) {
+    console.error(error);
+    return null;
+  }
+}
+
+const getWeather = async (lat, lon) => {
+  const url = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${process.env.API_KEY_openweather}`;
+  try {
+    const response = await axios.get(url);
+    const temperature = response.data.list[0].main.temp;
+    return temperature;
+  } catch (error) {
+    console.error(error);
+    return null;
+  }
+}
+
 app.get('/home', (req, res) => {
   res.render('pages/home.ejs')
 });
