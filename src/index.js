@@ -146,8 +146,8 @@ const auth = (req, res, next) => {
 
 // Authentication Required
 // app.use(auth);
-const getLatLong = async (cityname, statecode, countrycode) => {
-  const url = `http://api.openweathermap.org/geo/1.0/direct?q=${cityname},${statecode},${countrycode}&appid=${process.env.API_KEY_openweather}`;
+const getLatLong = async (cityname) => {
+  const url = `http://api.openweathermap.org/geo/1.0/direct?q=${cityname}&appid=${process.env.API_KEY_openweather}`;
   try {
     const response = await axios.get(url);
     const lat = response.data[0].lat;
