@@ -61,24 +61,34 @@ app.use(
 // <!-- Spotify token/API tesing -->
 // *****************************************************
 
-// var spotify_clientID = process.env.SPOTIFY_CLIENT_ID;
-// var spotify_clientSecret = process.env.SPOTIFY_CLIENT_SECRET;
-// console.log(`Client ID: ${spotify_clientID}\nClient secret: ${spotify_clientSecret}`); // delete after debugging
+var spotify_clientID = process.env.SPOTIFY_CLIENT_ID;
+var spotify_clientSecret = process.env.SPOTIFY_CLIENT_SECRET;
+console.log(`Client ID: ${spotify_clientID}\nClient secret: ${spotify_clientSecret}`); // delete after debugging
 
-// var spotifyObject =  axios({
-//   url: `https://accounts.spotify.com/api/token`,
-//   method: 'POST',
-//   dataType: 'json',
-//   headers: {
-//     'Content-Type': 'application/x-www-form-urlencoded',
-//   },
-//   params: {
-//     grant_type: 'client_credentials',
-//     client_id: process.env.SPOTIFY_CLIENT_ID,
-//     client_secret: process.env.SPOTIFY_CLIENT_SECRET,
-//   },
-// })
-// console.log(spotifyObject);
+function getToken() {
+  axios({
+    url: `https://accounts.spotify.com/api/token`,
+    method: 'POST',
+    dataType: 'json',
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded',
+    },
+    params: {
+      grant_type: 'client_credentials',
+      client_id: process.env.SPOTIFY_CLIENT_ID,
+      client_secret: process.env.SPOTIFY_CLIENT_SECRET,
+    },
+  })
+  .then(results => {
+    console.log('successful');
+    return results;
+  })
+  .catch(error => {
+    console.log('ERROR!');
+  });
+}
+
+console.log(spotifyObject);
 
 
 // *****************************************************
@@ -189,25 +199,25 @@ app.get("/logout", (req, res) => {
 });
 
 app.get('/playlist', async (req,res) => {
-  axios({
-    url: `https://accounts.spotify.com/api/token`,
-    method: 'POST',
-    dataType: 'json',
-    headers: {
-      'Content-Type': 'application/x-www-form-urlencoded',
-    },
-    params: {
-      grant_type: 'client_credentials',
-      client_id: process.env.SPOTIFY_CLIENT_ID,
-      client_secret: process.env.SPOTIFY_CLIENT_SECRET,
-    },
-  })
-  .then(results => {
-    console.log(results.data); // the results will be displayed on the terminal if the docker containers are running // Send some parameters
-  })
-  .catch(error => {
-    // Handle errors
-  });
+  // axios({
+  //   url: `https://accounts.spotify.com/api/token`,
+  //   method: 'POST',
+  //   dataType: 'json',
+  //   headers: {
+  //     'Content-Type': 'application/x-www-form-urlencoded',
+  //   },
+  //   params: {
+  //     grant_type: 'client_credentials',
+  //     client_id: process.env.SPOTIFY_CLIENT_ID,
+  //     client_secret: process.env.SPOTIFY_CLIENT_SECRET,
+  //   },
+  // })
+  // .then(results => {
+  //   console.log(results.data); // the results will be displayed on the terminal if the docker containers are running // Send some parameters
+  // })
+  // .catch(error => {
+  //   // Handle errors
+  // });
 
   res.render('pages/playlist.ejs')
 });
