@@ -151,6 +151,31 @@ app.get('/home', (req, res) => {
   res.render('pages/home.ejs')
 });
 
+const getToken = async (client_id, client_secret) => {
+  const result = axios({
+    url: `https://accounts.spotify.com/api/token`,
+    method: 'POST',
+    dataType: 'json',
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded'
+    },
+    params: {
+      grant_type: 'client_credentials',
+      client_id: client_id,
+      client_secret: client_secret
+    },
+  })
+    .then(results => {
+      var access_token = results.data.access_token;
+      //console.log(access_token);
+      return access_token;
+    })
+    .catch(error => {
+      return null;
+    });
+    return result;
+}
+
 const getTracks = async (fahrenheit, token) => {
   if (fahrenheit < 32) {
     var bars = "All the waves came moving, pushing us under water, But don't worry 'bout that..."
@@ -207,12 +232,8 @@ const getTracks = async (fahrenheit, token) => {
 app.get('/playlist', async (req, res) => {
   var city1_name = req.body.from;
   var city2_name = req.body.to;
-  /* var city1_statecode = null; 
-  var city2_statecode = null;
-  var city1_countrycode = "US";
-  var city2_countrycode = "US"; */
 
-  //var token = await getToken(process.env.SPOTIFY_CLIENT_ID, process.env.SPOTIFY_CLIENT_SECRET); //return a string of the token only
+  var token = await getToken(process.env.SPOTIFY_CLIENT_ID, process.env.SPOTIFY_CLIENT_SECRET); //return a string of the token only
   //var token = "BQCHS7h5Zt5-0vBS37VINrTYlqsj0hhJU-86yDIKOYw67kDjiO7QVq86ZsV1obOR10Ny1kA_ilHDDpfNuPxS65Yg6Exaj-jPgnzfUWmuQUviHW0pB9ee";
   
   var city1_latlong = await getLatLong(city1_name); //return an array with [lat_val, log_val]
