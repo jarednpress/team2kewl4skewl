@@ -100,9 +100,10 @@ app.post('/login', async (req, res) => {
           req.session.user = {
             username: username
           }
-          res.redirect(200, '/home');
+            // res.redirect(200, '/home');
+            res.redirect('/home');
         } else { 
-          res.render('pages/login.ejs', {
+            res.render('pages/login.ejs', {
             message: "Incorrect Username or Password"
           })
         }
