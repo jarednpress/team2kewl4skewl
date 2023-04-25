@@ -21,3 +21,17 @@ Meeting 1 - April 12th
 - Put the table in the meeting notes
 - Maybe use music API
 - Put minutes on the GitHub repository
+
+Meeting 2 - April 18th
+- Epic should be more descriptive
+  - Rename to feature descriptions
+  - Add user stories
+- Release notes: need to be posted by Friday
+  - Missing week 1 (communication break between TA and group)
+  - Submit release notes for week 1 by EOD (4/18)
+  - Release notes for Week 2 due by Friday 4-21
+- Create table to track number of commits made by each teammate
+  - One unique major functional commit due each week (i.e. buidling an endpoint)
+- APIs: Spotify and OpenWeather
+- Scope of project should not be changed any more
+  - SCOPE: using start and end locations, get weather at each point and create a weather inspired playlist
