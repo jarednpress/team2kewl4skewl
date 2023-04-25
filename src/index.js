@@ -87,8 +87,8 @@ function getToken() {
     console.log('ERROR!');
   });
 }
-
-console.log(spotifyObject);
+var spotifyToken = getToken();
+console.log(spotifyToken);
 
 
 // *****************************************************
