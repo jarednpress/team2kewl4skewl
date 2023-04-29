@@ -53,16 +53,25 @@
             <br>
             <br>
             <div class="content-wrapper">
-                <p><span class="travel-text">Place One </span><span class="header-text">to </span><span class="travel-text">Place Two</span></p>
+                <p><span class="travel-text"><%= city1_name %> </span><span class="header-text">to </span><span class="travel-text"><%= city1_name %></span></p>
                 <h1>Your Playlist is ? minute(s) long</h1>
             </div>
             <br>
             <div class="playlist">
                 <h2 style="color: rgba(0, 0, 0, 0.7); font-weight: bold"> Weather:</h2>
-                <div style="text-align: center">
-                    <h2>Artist - song</h2>
-                    <h6>ALBUM Duration in minutes</h6>
-                </div>
+                <% for (var i = 0; i < city1_tracks.length; i++) { %>
+                    <div style="text-align: center">
+                        <h2><%= city1_tracks.artists[0].name %> - <%= city1_tracks.name %></h2>
+                        <h6><%= city1_tracks.album.name %> Duration in minutes</h6>
+                    </div>
+                <%}%>
+                <h2 style="color: rgba(0, 0, 0, 0.7); font-weight: bold"> Weather:</h2>
+                <% for (var i = 0; i < city2_tracks.length; i++) { %>
+                    <div style="text-align: center">
+                        <h2><%= city2_tracks.artists[0].name %> - <%= city2_tracks.name %></h2>
+                        <h6><%= city2_tracks.album.name %> Duration</h6>
+                    </div>
+                <%}%>
             </div>
         </div>
     </main>
