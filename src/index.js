@@ -77,10 +77,6 @@ app.get('/', (req, res) => {
   res.redirect('/welcome'); 
 });
 
-// app.get('/home', (req, res) => {
-//   res.redirect('/login'); 
-// });
-
 app.get('/login', (req, res) => {
   res.render('pages/login.ejs');
 });
