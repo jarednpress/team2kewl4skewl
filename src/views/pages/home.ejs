@@ -92,19 +92,19 @@
 
             <div class="content-wrapper">
                 <h1>Welcome, USERNAME!</h1>
-                <form class="travel-text" action="/your_destination_path" method="POST">
+                <form class="travel-text" action="/playlist" method="GET">
                     <label for="from">I am driving from </label>
 
                     <input id="search-box1" type="text" id="from" name="from" required placeholder="wya" />
-                    <script src="/maps.js" type="text/javascript"></script>
+                    <!-- <script src="/maps.js" type="text/javascript"></script> -->
 
                     <label for="to"> to </label>
 
                     <input id="search-box2" type="text" id="to" name="to" required placeholder="wyd" />
-                    <script src="/maps.js" type="text/javascript"></script>
+                    <!-- <script src="/maps.js" type="text/javascript"></script> -->
 
+                    <button class="custom-btn" type="submit">Let's Go!</button>
                 </form>
-                <button class="custom-btn" onclick="location.href='/playlist'">Let's Go!</button>
             </div>
 
             <br>
@@ -118,6 +118,7 @@
             </div>
         </div>
     </main>
+    <script src="/maps.js" type="text/javascript"></script>
 </body>
 
 </html>

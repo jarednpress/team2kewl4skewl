@@ -64,6 +64,10 @@ app.use(
 // <!-- Section 4 : API Routes -->
 // *****************************************************
 
+app.get('/welcome_test', (req, res) => {
+  res.json({status: 'success', message: 'Welcome!'});
+});
+
 app.get('/welcome', (req, res) => {
   res.render('pages/welcome.ejs');
 });
@@ -83,10 +87,6 @@ app.get('/login', (req, res) => {
 
 app.get('/register', (req, res) => {
   res.render('pages/register.ejs')
-});
-
-app.get('/playlist', (req, res) => {
-  res.render('pages/playlist.ejs')
 });
 
 app.post('/login', async (req, res) => {
@@ -155,26 +155,28 @@ const auth = (req, res, next) => {
 // Authentication Required
 // app.use(auth);
 const getLatLong = async (cityname) => {
-  const url = `http://api.openweathermap.org/geo/1.0/direct?q=${cityname}&appid=${process.env.API_KEY_openweather}`;
+  //console.log("getLatLong Called");
+  const url = `http://api.openweathermap.org/geo/1.0/direct?q=${cityname}&appid=${process.env.API_KEY_OPENWEATHER}`;
   try {
     const response = await axios.get(url);
     const lat = response.data[0].lat;
     const long = response.data[0].lon;
     return [ lat, long ];
   } catch (error) {
-    console.error(error);
+    //console.error(error);
     return null;
   }
 }
 
 const getWeather = async (lat, lon) => {
-  const url = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${process.env.API_KEY_openweather}`;
+  //console.log("getWeather Called");
+  const url = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${process.env.API_KEY_OPENWEATHER}`;
   try {
     const response = await axios.get(url);
     const temperature = response.data.list[0].main.temp;
     return temperature;
   } catch (error) {
-    console.error(error);
+    //console.error(error);
     return null;
   }
 }
@@ -262,14 +264,26 @@ const getTracks = async (fahrenheit, token) => {
 
 
 app.get('/playlist', async (req, res) => {
-  var city1_name = req.body.from;
-  var city2_name = req.body.to;
+  var city1_name = req.query.from;
+  var city2_name = req.query.to;
+  //var city1_name = "Boulder";
+  //var city2_name = "Denver";
+
+  console.log(req);
+  console.log(city1_name);
+  console.log(city2_name);
+  // var city1_split = city1_name.split(',');
+  // var city2_split = city2_name.split(',');
 
   var token = await getToken(process.env.SPOTIFY_CLIENT_ID, process.env.SPOTIFY_CLIENT_SECRET); //return a string of the token only
   //var token = "BQCHS7h5Zt5-0vBS37VINrTYlqsj0hhJU-86yDIKOYw67kDjiO7QVq86ZsV1obOR10Ny1kA_ilHDDpfNuPxS65Yg6Exaj-jPgnzfUWmuQUviHW0pB9ee";
+  //console.log(token);
   
   var city1_latlong = await getLatLong(city1_name); //return an array with [lat_val, log_val]
   var city2_latlong = await getLatLong(city2_name);
+
+  console.log(city1_latlong);
+  console.log(city2_latlong);
 
   var city1_kelvin = await getWeather(city1_latlong[0], city1_latlong[1]); //return kelvin
   var city2_kelvin = await getWeather(city2_latlong[0], city2_latlong[1]);
@@ -282,13 +296,21 @@ app.get('/playlist', async (req, res) => {
   var city1_tracks = await getTracks(city1_fahrenheit, token);
   var city2_tracks = await getTracks(city2_fahrenheit, token);
   
-  /* console.log("hello")
-  console.log(city1_tracks)
-  console.log(city2_tracks) */
+  console.log(city1_tracks);
+  console.log(city2_tracks);
+  console.log(city1_name);
+  console.log(city2_name);
+  console.log(city1_fahrenheit);
+  console.log(city2_fahrenheit);
+  console.log("--------");
 
   res.render("pages/playlist", {
     city1_tracks: city1_tracks,
-    city2_tracks: city2_tracks
+    city2_tracks: city2_tracks,
+    city1_name: city1_name,
+    city2_name: city2_name,
+    city1_fahrenheit: city1_fahrenheit,
+    city2_fahrenheit: city2_fahrenheit
   })
 
 })
@@ -300,9 +322,6 @@ app.get("/logout", (req, res) => {
   });
 });
 
-app.get('/playlist', (req,res) => {
-  res.render('pages/playlist.ejs')
-});
 
 
 
@@ -311,6 +330,5 @@ app.get('/playlist', (req,res) => {
 // *****************************************************
 // starting the server and keeping the connection open to listen for more requests
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-  console.log(`Server is listening on port ${PORT}`);
-});
+module.exports = app.listen(PORT);
+console.log(`Server is listening on port ${PORT}`);
