@@ -23,13 +23,13 @@ describe('Server!', () => {
       });
   });
 
-/* it('positive : /login success', done => {
+it('positive : /login success', done => {
   chai
     .request(server)
     .post('/login')
     .send({username: 'asdf', password: 'asdf'})
     .end((err, res) => {
-      res.header['location'].should.include('/home') //for res.redirect change to endpoint name
+      expect(res.text).to.contain('<title>Login</title>');
       expect(res).to.have.status(200);
       done();
     });
@@ -54,7 +54,7 @@ it('positive : /register success', done => {
     .post('/register')
     .send({username: 'StupidUserName', password: 'EasyPassWord'})
     .end((err, res) => {
-      res.header['location'].should.include('/login') //for res.redirect change to endpoint name
+      expect(res.text).to.contain('<title>Login</title>');
       expect(res).to.have.status(200);
       done();
     });
@@ -65,11 +65,11 @@ it('Negative : /register Username Already Taken', done => {
     .post('/register')
     .send({username: 'asdf', password: 'asdf'})
     .end((err, res) => {
-      res.header['location'].should.include('/login') //for res.redirect change to endpoint name
+      expect(res.text).to.contain('<title>Register</title>');
       expect(res).to.have.status(200);
       done();
     });
-}); */
+});
   // ===========================================================================
   // TO-DO: Part A Login unit test case
 });
