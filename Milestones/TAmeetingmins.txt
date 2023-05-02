@@ -35,3 +35,17 @@ Meeting 2 - April 18th
 - APIs: Spotify and OpenWeather
 - Scope of project should not be changed any more
   - SCOPE: using start and end locations, get weather at each point and create a weather inspired playlist
+
+Meeting 3 - April 25
+- We need to include user stories. Things on the project board are not labeled correctly and descriptions are not user stories. Use proper epic names - feature names not ‘testing’
+- Release notes are also important. 
+- Main goal should be to make the playlist page display all of the backend wizardry we’ve completed.
+- Collaborating with a group member to complete a commit actually results in a loss of points.
+- The appearance of writing many lines is more important than the progress made by the group.
+
+Meeting 4 - email update
+Hi,Here is our weekly update,
+The project board is updated.We have four sets of release notes.Here are our presentation slides.Meeting notes are updated.Functional Features:
+- Log in/register/log out- Get playlist   - Can make a playlist based on the weather at the start and destination- View playlist   - Can see the playlist page with it displaying the songs artists etc. based on both the weatherNo inactive branchesIndividual commitsTeam memberCommitsFeatures worked onEmmaDidn't have enough code that everyone needed to commit, see team contributions tableJared2Worked on travel duration and refining search resultsJonathan5Fixed bugs with index js, test cases, fixed any leftover issuesFrancisco3Documentation: read me and project reportEvan3Playlist page JSTeam contributionsTeam memberTeam contributionsEmmaWorked on the presentation, project report, meeting minutes, sending the email, deploying the site, updating the project board, helping debug, etc.JaredHelped Jonathan debug, fixed final issues with the siteJonathanHelped Jared debug, fixed final issues with the siteFranciscoDid documentation see commits tableEvanHelped with debugging and cleaned up playlist page
+No concerns :)
+Best,the 2kewl4skewl team akaEmma, Jonathan, Jared, Evan, and Francisco
