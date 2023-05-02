@@ -1,0 +1,60 @@
+Pages
+Register
+Log in 
+Home
+Form to create new playlist
+Link to view old playlists
+Optional: Log out
+Alternatively, return to login page with pop up box
+Results
+Displays newly created playlist
+Displays recent playlists (or display on home)
+Store every playlist ever created; if given time eventually switch to only store previous x number of playlists
+Take advantage of .ejs to create control statements to display old playlists or new playlists.
+APIs/endpoints
+/login
+/register
+/get_playlist (create playlist)
+Optional: /display_playlist (return recently created playlists)
+
+Next lab…
+Implement at least 2 APIs
+Draft outline 3 User Acceptance Testing (UATS)
+Emma volunteered to complete all 3
+Implement 4 total test keys
+
+Expected Assignments 
+Jonathan
+1 API + test
+Evan
+2 APIs + test
+Jared
+2 test keys
+Emma
+3 UATs
+Francisco
+/get_playlist (API) + API keys (Open weather + Google maps)
+
+
+
+Project needs…
+Need API keys
+
+Next TA meeting… Tuesday 18 April 2023 2:45 PM - 3:00 PM
+
+Team meeting 5/2
+- Need to work on playlist page
+Emma:
+- Send email to update TA
+- Continue with documentation stuff
+Jared:
+- Clean up bugs
+Jonathan:
+- Working on finishing site
+Fransico:
+- Read me & other docs
+Evan:
+- Great job on playlists page
+  - Clean up any minor issues
+
+Need to divide slides for presination and send out email
