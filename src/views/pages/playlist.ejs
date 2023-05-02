@@ -49,20 +49,62 @@
 
 <body>
     <main>
+        <%
+            var temp1 = "";
+            var temp2 = "";
+            var time = 0;
+            if (city1_fahrenheit < 32) {
+                temp1 = "Freezing";
+            }
+            else if (city1_fahrenheit >= 32 && city1_fahrenheit < 55) {
+                temp1 = "Cold";
+            }
+            else if (city1_fahrenheit >= 55 && city1_fahrenheit < 70) {
+                temp1 = "Chilly";
+            }
+            else {
+                temp1 = "Warm";
+            }
+            if (city2_fahrenheit < 32) {
+                temp2 = "Freezing";
+            }
+            else if (city2_fahrenheit >= 32 && city2_fahrenheit < 55) {
+                temp2 = "Cold";
+            }
+            else if (city2_fahrenheit >= 55 && city2_fahrenheit < 70) {
+                temp2 = "Chilly";
+            }
+            else {
+                temp2 = "Warm"; 
+            }
+            for (var i = 0; i < city1_tracks.length; i++) {
+                time = time + city1_tracks[i].duration_ms;
+                time = time + city2_tracks[i].duration_ms;
+            }
+        %>
         <div class="container">
             <br>
             <br>
             <div class="content-wrapper">
-                <p><span class="travel-text">Place One </span><span class="header-text">to </span><span class="travel-text">Place Two</span></p>
-                <h1>Your Playlist is ? minute(s) long</h1>
+                <p><span class="travel-text"><%= city1_name %> </span><span class="header-text">to </span><span class="travel-text"><%= city1_name %></span></p>
+                <h1>Your Playlist is <%= Math.floor(time / 60000) %> minute(s) long</h1>
             </div>
             <br>
             <div class="playlist">
-                <h2 style="color: rgba(0, 0, 0, 0.7); font-weight: bold"> Weather:</h2>
-                <div style="text-align: center">
-                    <h2>Artist - song</h2>
-                    <h6>ALBUM Duration in minutes</h6>
-                </div>
+                <h2 style="color: rgba(0, 0, 0, 0.7); font-weight: bold"><%= temp1 %> Weather</h2>
+                <% for (var i = 0; i < city1_tracks.length; i++) { %>
+                    <div style="text-align: center">
+                        <h2><%= city1_tracks[i].artists[0].name %> - <%= city1_tracks[i].name %></h2>
+                        <h6><%= city1_tracks[i].album.name %> <%= Math.floor(city1_tracks[i].duration_ms / 60000) %>:<%= Math.floor((city1_tracks[i].duration_ms % 60000) / 1000).toString().padStart(2, '0') %></h6>
+                    </div>
+                <%}%>
+                <h2 style="color: rgba(0, 0, 0, 0.7); font-weight: bold"><%= temp2 %> Weather</h2>
+                <% for (var i = 0; i < city2_tracks.length; i++) { %>
+                    <div style="text-align: center">
+                        <h2><%= city2_tracks[i].artists[0].name %> - <%= city2_tracks[i].name %></h2>
+                        <h6><%= city2_tracks[i].album.name %> <%= Math.floor(city2_tracks[i].duration_ms / 60000) %>:<%= Math.floor((city2_tracks[i].duration_ms % 60000) / 1000).toString().padStart(2, '0') %></h6>
+                    </div>
+                <%}%>
             </div>
         </div>
     </main>
