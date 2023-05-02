@@ -149,7 +149,7 @@ const auth = (req, res, next) => {
 
 
 // Authentication Required
-// app.use(auth);
+app.use(auth);
 const getLatLong = async (cityname) => {
   //console.log("getLatLong Called");
   const url = `http://api.openweathermap.org/geo/1.0/direct?q=${cityname}&appid=${process.env.API_KEY_OPENWEATHER}`;
