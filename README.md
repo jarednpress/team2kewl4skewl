@@ -1,8 +1,12 @@
-[![Github Repository](<img-asset-link>)](https://github.com/jarednpress/team2kewl4skewl.git)
+[![Github Repository](src/img/logo.png)](https://github.com/jarednpress/team2kewl4skewl.git)
 # Meteor Melodies Mapper
+
+Presented by Team 2Kewl4Skewl
+(*CSCI-3308-Recitation-15-Team-02*)
+
 ## Description
 
-Meteor Melodies Mapper offers a unique way to prepare playlists for a roadtrip. By taking in the origin and destination provided by the user, this web app will process that data to determine the weather at each point 
+Meteor Melodies Mapper offers a unique way to prepare a playlist for any roadtrip. By taking in the origin and destination, provided by the user, our app web app will process that data to determine the weather at each point then generate a playlist suited to the mood of the weather along the route.
 
 ## Contributors
 
@@ -22,7 +26,6 @@ In the process of creating Meteor Melodies Mapper, the following technologies we
     - EJS
     - Bootstrap
     - GoodNotes
-    - Lucidchart
 5. NodeJS
 6. Microsoft Azure
 7. External APIs
@@ -30,6 +33,8 @@ In the process of creating Meteor Melodies Mapper, the following technologies we
     - Open Weather
     - Spotify
 8. Docker
+9. Lucidchart
+
 ## Prerequisites
 ## Step-by-step
 ## Testing
