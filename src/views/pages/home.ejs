@@ -8,7 +8,6 @@
     <%- include ('../partials/head') %>
         <%- include ('../partials/menu') %>
             <style>
-                /* Optional: Add some styling for the input element */
                 #search-box1 {
                     font-size: 30px;
                     font-weight: bold;
@@ -76,6 +75,17 @@
                     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
                     text-align: center;
                 }
+
+                .form-container {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                }
+
+                .input-container {
+                    display: flex;
+                    align-items: center;
+                }
             </style>
             <script
                 src="https://maps.googleapis.com/maps/api/js?key=<%= process.env.API_KEY_GOOGLEMAPS %>&libraries=places&callback=initAutocomplete"
@@ -92,15 +102,16 @@
 
             <div class="content-wrapper">
                 <h1>Welcome, USERNAME!</h1>
-                <form class="travel-text" action="/playlist" method="GET">
-                    <label for="from">I am driving from </label>
+                <form class="travel-text form-container" action="/playlist" method="GET">
+                    <div class="input-container">
+                        <label for="from">I am driving from </label>
 
-                    <input id="search-box1" type="text" id="from" name="from" required placeholder="wya" />
+                        <input id="search-box1" type="text" id="from" name="from" required placeholder="wya" />
 
-                    <label for="to"> to </label>
+                        <label for="to"> to </label>
 
-                    <input id="search-box2" type="text" id="to" name="to" required placeholder="wyd" />
-
+                        <input id="search-box2" type="text" id="to" name="to" required placeholder="wyd" />
+                    </div>
                     <button class="custom-btn" type="submit">Let's Go!</button>
                 </form>
             </div>
