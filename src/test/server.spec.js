@@ -70,6 +70,17 @@ it('Negative : /register Username Already Taken', done => {
       done();
     });
 });
+it('test : /playlist without auth', done => {
+  chai
+    .request(server)
+    .post('/playlist')
+    .send({from: 'Boulder, CO, USA', to: 'Denver, CO, USA'})
+    .end((err, res) => {
+      expect(res.text).to.contain('<title>Login</title>');
+      expect(res).to.have.status(200);
+      done();
+    });
+});
   // ===========================================================================
   // TO-DO: Part A Login unit test case
 });
