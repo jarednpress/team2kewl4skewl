@@ -26,6 +26,7 @@ In the process of creating Meteor Melodies Mapper, the following technologies we
     - EJS
     - Bootstrap
     - GoodNotes
+    - JavaScript
 5. NodeJS
 6. Microsoft Azure
 7. External APIs
@@ -36,7 +37,18 @@ In the process of creating Meteor Melodies Mapper, the following technologies we
 9. Lucidchart
 
 ## Prerequisites
-## Step-by-step
+The code is all self-contained and should not require any additonal additional software with the exception of Docker Desktop and an editor such as Visual Studio Code when running locally. Note, API keys for Google Maps, Open Weather Map, and Spotify are required to properly the application.
+## Step-by-step for LocalHost
+1. Clone the repo to a local environment
+2. Open Docker Desktop (https://www.docker.com/products/docker-desktop/)
+3. Open an editor such as Visual Studio Code (https://code.visualstudio.com/download)
+4. If using Visual Studio Code, open the builtin terminal
+5. Boot Docker using the following command:
+    - *docker-compose up*
+6. Open a web browser and type *localhost:3000* to access application
+7. Once done accessing the application, in the terminal, terminate the session with ctrl-c and enter the following command to wind down Docker:
+    - *docker-compose down*
 ## Testing
+The test cases have been implemented under `./tests` and will run automatically upon running the application. No additional input is required to perform tests unless the user is manually testing features.
 ## Link
-
+http://recitation-015-team-02.eastus.cloudapp.azure.com:3000/welcome
